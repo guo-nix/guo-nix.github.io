@@ -1,8 +1,8 @@
 ---
-title: About
+title: SColumn
 icon: fas fa-info-circle
 order: 4
 ---
 
-> Add Markdown syntax content to file `_tabs/about.md`{: .filepath } and it will show up on this page.
+> Jekyll 中文文档 `https://jekyll.zcopy.site/docs/`{: .filepath } 
 {: .prompt-tip }
