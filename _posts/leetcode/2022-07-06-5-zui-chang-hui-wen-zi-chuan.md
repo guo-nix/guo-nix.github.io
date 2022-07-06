@@ -12,18 +12,20 @@ math: true
 
 给定一个字符串 s，找到 s 中最长的回文子串。你可以假设 s 的最大长度为 1000。 
 
-示例 1：
+
 ``` 
 输入: "babad"
 输出: "bab"
 注意: "aba" 也是一个有效答案。
 ```
+{: file="示例 1" }
 
-示例 2： 
+
 ```
 输入: "cbbd"
 输出: "bb"
 ```
+{: file="示例 2" }
 
 Related Topics 字符串 动态规划 
 
@@ -31,12 +33,11 @@ Related Topics 字符串 动态规划
 
 ### 方法一、中心扩展算法
 
-对于一个子串而言，如果它是回文串，并且长度大于 2，那么将它首尾的两个字母去除之后，它仍然是个回文串。例如对于字符串 “ababa”，如果已经知道 “bab” 是回文串，那么 “ababa” 一定是回文串，这是因为它的首尾两个字母都是 “a”。
+对于一个子串而言，如果它是回文串，并且长度大于 2，那么将它首尾的两个字母去除之后，它仍然是个回文串。例如对于字符串 `“ababa”`，如果已经知道 `“bab”` 是回文串，那么 `“ababa”` 一定是回文串，这是因为它的首尾两个字母都是 `“a”`。
 
-用 P(i,j) 表示字符串 s 的第 i 到 j 个字母组成的串，状态转移方程：
+用 `P(i,j)` 表示字符串 s 的第 i 到 j 个字母组成的串，状态转移方程：
 
-<img src=".\images\5_fig2.png">
-
+![](/assets/img/leetcode/1-50/5_fig1.png)
 
 思路：枚举所有的「回文中心」并尝试「扩展」，直到无法扩展为止，此时的回文串长度即为此「回文中心」下的最长回文串长度。我们对所有的长度求出最大值，即可得到最终的答案。
 
@@ -62,7 +63,8 @@ class Solution {
     }
 
     public int expandAroundCenter(String s, int left, int right){
-        while(left>=0 && right<s.length() && s.charAt(left)==s.charAt(right)){
+        while(left>=0 && right<s.length() 
+            && s.charAt(left)==s.charAt(right)){
             left--;
             right++;
         }
@@ -73,16 +75,16 @@ class Solution {
 
 复杂度分析
 
-- 时间复杂度：O(n^2)
+- 时间复杂度：`O(n^2)`
 
-- 空间复杂度：O(1)
+- 空间复杂度：`O(1)`
 
 
 ### 方法二、动态规划
 
-用 P(i,j) 表示字符串 s 的第 i 到 j 个字母组成的串，状态转移方程：
+用 `P(i,j)` 表示字符串 s 的第 i 到 j 个字母组成的串，状态转移方程：
 
-<img src=".\images\5_fig2.png">
+![](/assets/img/leetcode/1-50/5_fig2.png){: width="431" height="77" }
 
 ```java
 public class Solution {
@@ -126,7 +128,8 @@ public class Solution {
                     }
                 }
 
-                // 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，此时记录回文长度和起始位置
+                // 只要 dp[i][L] == true 成立，就表示子串 s[i..L] 是回文，
+                // 此时记录回文长度和起始位置
                 if (dp[i][j] && j - i + 1 > maxLen) {
                     maxLen = j - i + 1;
                     begin = i;
@@ -141,14 +144,14 @@ public class Solution {
 
 复杂度分析
 
-- 时间复杂度：O(n^2)，其中 n 是字符串的长度。动态规划的状态总数为 O(n^2)，对于每个状态，需要转移的时间为 O(1)。
+- 时间复杂度：`O(n^2)`，其中 n 是字符串的长度。动态规划的状态总数为 `O(n^2)`，对于每个状态，需要转移的时间为 `O(1)`。
 
-- 空间复杂度：O(n^2)，即存储动态规划状态需要的空间。
+- 空间复杂度：`O(n^2)`，即存储动态规划状态需要的空间。
 
 
 
 ### 方法三、Manacher 算法
 
-复杂度为 O(n) 的 Manacher 算法。然而该算法十分复杂，一般不作为面试内容。
+复杂度为 `O(n)` 的 **Manacher** 算法。然而该算法十分复杂，一般不作为面试内容。
 
 [题解](https://leetcode-cn.com/problems/longest-palindromic-substring/solution/zui-chang-hui-wen-zi-chuan-by-leetcode-solution/)
