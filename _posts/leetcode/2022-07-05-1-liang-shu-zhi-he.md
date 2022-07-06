@@ -3,7 +3,7 @@ title: 1. 两数之和
 author: guo-nix
 date: 2022-07-05 11:33:00 +0800
 categories: [LeetCode, 数组]
-tags: [数据结构]  
+tags: [数据结构与算法]  
 math: true
 ---
 
