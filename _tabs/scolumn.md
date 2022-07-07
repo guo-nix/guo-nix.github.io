@@ -1,7 +1,7 @@
 ---
 title: SColumn
 icon: fas fa-info-circle
-order: 4
+order: 3
 ---
 
 > Jekyll 中文文档 `https://jekyll.zcopy.site/docs/`{: .filepath } 
